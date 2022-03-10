@@ -6,5 +6,9 @@ A one-player Python tic-tac-toe game.
 """
 
 board = [[None, None, None], [None, None, None], [None, None, None]]
-for i in range(len(board)):
-    print(board[i])
+
+def print_board(board):
+    for i in range(3):
+        print(board[i])
+
+print_board(board)
