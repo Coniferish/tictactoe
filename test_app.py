@@ -17,3 +17,6 @@ def test_updated_position():
     initial = board[position[0]][position[1]]
     updated = board[position[0]][position[1]]
     assert initial != updated
+
+# def test_get_move_len():
+#     get_move()
