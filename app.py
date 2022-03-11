@@ -4,7 +4,7 @@
 """
 A one-player Python tic-tac-toe game.
 """
-
+mark = "O" # first time alternate_turn is called, mark is changed to "X"
 board = [[None, None, None], [None, None, None], [None, None, None]]
 
 def print_board(board):
@@ -14,3 +14,18 @@ def print_board(board):
 def get_move():
     position = input("Enter the position for your next move in '#row# #column#' format\n")
     return list(map(int, list(position.split())))
+
+def alternate_turn():
+    global mark
+    if mark == "O":
+        mark = "X"
+    elif mark =="X":
+        mark = "O"
+    return mark
+
+def play_move():
+    global mark
+    position = get_move()
+    alternate_turn()
+    board[position[0]][position[1]] = mark
+    print_board(board)
