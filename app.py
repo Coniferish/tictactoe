@@ -11,20 +11,30 @@ def print_board(board):
     for i in range(3):
         print(board[i])
 
+
 def get_move():
+    global board
+
     position = input("Enter the position for your next move in '#row# #column#' format\n")
-    return list(map(int, list(position.split())))
+    position = list(map(int, list(position.split())))
+    if board[position[0]][position[1]] != None:
+        get_move()
+    return position
+
 
 def alternate_turn():
     global mark
+
     if mark == "O":
         mark = "X"
     elif mark =="X":
         mark = "O"
-    return mark
+
 
 def play_move():
     global mark
+    global board
+
     position = get_move()
     alternate_turn()
     board[position[0]][position[1]] = mark
