@@ -12,13 +12,10 @@ def print_board(board):
         print(board[i])
 
 
-def get_move():
-    global board
-
-    position = input("Enter the position for your next move in '#row# #column#' format\n")
-    position = list(map(int, list(position.split())))
-    if board[position[0]][position[1]] != None:
-        get_move()
+def get_move(position=None):    
+    if not position:
+        position = input("Enter the position for your next move in '#row# #column#' format\n")
+    position = check_move(list(map(int, list(position.split()))))
     return position
 
 
@@ -32,10 +29,18 @@ def alternate_turn():
 
 
 def play_move():
-    global mark
     global board
 
     position = get_move()
     alternate_turn()
     board[position[0]][position[1]] = mark
     print_board(board)
+
+# NTS: would it be better to create a list of moves already played instead of checking the actual board?
+def check_move(position):
+    while board[position[0]][position[1]] != None:
+        position = input("""That spot has already been filled.\n
+        Enter the position for your next move in '#row# #column#' format\n
+        """)
+        position = list(map(int, list(position.split())))
+    return position
