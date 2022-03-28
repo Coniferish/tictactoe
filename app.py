@@ -8,7 +8,8 @@ A one-player Python tic-tac-toe game.
 is_x_turn = True
 board = [[None, None, None], [None, None, None], [None, None, None]]
 
-def print_board(board):
+
+def print_board():
     for i in range(len(board)):
         print(board[i])
 
@@ -49,14 +50,20 @@ def marker(is_x_turn):
         return "O"
 
 
-def play_move():
-    global board
-
+def turn():
     position = get_move()
     alternate_turn()
+    update_board(position)
+    print_board()
+
+
+def update_board(position):
+    global board
+    
     board[position[0]][position[1]] = marker(is_x_turn)
-    print_board(board)
 
 
 if __name__ == '__main__':
-    play_move()
+    turn()
+    turn()
+    turn()
