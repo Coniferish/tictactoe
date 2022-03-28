@@ -13,19 +13,26 @@ def print_board(board):
         print(board[i])
 
 
-def get_move(position=None):    
-    if not position:
-        position = input("Enter the position for your next move in '#row# #column#' format\n")
-    position = check_move(list(map(int, list(position.split()))))
+def get_move():    
+    position = check_if_empty_position(
+        position_to_list(
+            input(
+                """Enter the position for your next move in '#row# #column#' format\n"""
+            )
+        )
+    )
     return position
 
 
-def check_move(position):
+def position_to_list(position: str):
+    return list(map(int, list(position.split())))
+
+
+def check_if_empty_position(position):
     while board[position[0]][position[1]] != None:
-        position = input("""That spot has already been filled.\n
+        position = position_to_list(input("""That spot has already been filled.\n
         Enter the position for your next move in '#row# #column#' format\n
-        """)
-        position = list(map(int, list(position.split())))
+        """))
     return position
 
 
