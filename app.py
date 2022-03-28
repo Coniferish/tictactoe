@@ -5,6 +5,7 @@
 A one-player Python tic-tac-toe game.
 """
 
+PLAYER_MARKER_TURN = {True: "X", False: "O"}
 is_x_turn = True
 board = [[None, None, None], [None, None, None], [None, None, None]]
 
@@ -43,10 +44,7 @@ def alternate_turn():
 
 
 def marker(is_x_turn):
-    if is_x_turn:
-        return "X"
-    else:
-        return "O"
+    return PLAYER_MARKER_TURN[is_x_turn]
 
 
 def play_move():
@@ -59,4 +57,6 @@ def play_move():
 
 
 if __name__ == '__main__':
+    play_move()
+    play_move()
     play_move()
