@@ -16,13 +16,20 @@ def print_board():
 
 def get_move():    
     position = check_if_empty_position(
-        position_to_list(
-            input(
-                """Enter the position for your next move in '#row# #column#' format\n"""
+        convert_indices(
+            position_to_list(
+                input(
+                    """Enter the position for your next move in '#row# #column#' format\n"""
+                )
             )
         )
     )
     return position
+
+
+def convert_indices(position):
+    adjusted = [x-1 for x in position]
+    return adjusted
 
 
 def position_to_list(position: str):
