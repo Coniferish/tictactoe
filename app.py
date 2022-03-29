@@ -63,7 +63,18 @@ def update_board(position):
     board[position[0]][position[1]] = marker(is_x_turn)
 
 
+def player_win(turns):
+    if turns < 4:
+        pass
+    else:
+        return False
+
+
 if __name__ == '__main__':
-    turn()
-    turn()
-    turn()
+    turns = 0
+    while not player_win(turns) and turns <= 8:
+        turn()
+        turns += 1
+    print("Game Over.")
+    
+
